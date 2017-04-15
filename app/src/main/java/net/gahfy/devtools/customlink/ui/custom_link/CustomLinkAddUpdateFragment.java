@@ -14,10 +14,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import net.gahfy.devtools.customlink.R;
 import net.gahfy.devtools.customlink.data.model.CustomLink;
-import net.gahfy.devtools.customlink.ui.base.BaseFragment;
 import net.gahfy.devtools.customlink.ui.activity.ContainerActivity;
+import net.gahfy.devtools.customlink.ui.base.BaseFragment;
 import net.gahfy.devtools.customlink.util.view.ErrorViewUtils;
 
 import javax.inject.Inject;
@@ -27,18 +29,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class CustomLinkAddUpdateFragment extends BaseFragment implements CustomLinkAddUpdateView {
-    @BindView(R.id.lyt_txt_custom_link_uri)
-    TextInputLayout lytTxtCustomLinkUri;
-
-    @BindView(R.id.txt_custom_link_title)
-    EditText txtCustomLinkTitle;
-
-    @BindView(R.id.txt_custom_link_uri)
-    EditText txtCustomLinkUri;
-
     @Inject
     public CustomLinkAddUpdatePresenter mPresenter;
-
+    @BindView(R.id.lyt_txt_custom_link_uri)
+    TextInputLayout lytTxtCustomLinkUri;
+    @BindView(R.id.txt_custom_link_title)
+    EditText txtCustomLinkTitle;
+    @BindView(R.id.txt_custom_link_uri)
+    EditText txtCustomLinkUri;
     private Unbinder mUnbinder;
 
     private CustomLink mCustomLink;
@@ -146,7 +144,7 @@ public class CustomLinkAddUpdateFragment extends BaseFragment implements CustomL
             mPresenter.unbind();
         }
         catch(NullPointerException e){
-            // Do nothing (we are leaving the view, no matter)
+            FirebaseCrash.report(e);
         }
         mCustomLink = null;
         mParentPresenter = null;
@@ -156,10 +154,6 @@ public class CustomLinkAddUpdateFragment extends BaseFragment implements CustomL
     public void setCustomLink(CustomLink customLink, int position){
         mCustomLink = customLink;
         mPosition = position;
-    }
-
-    public void setParentPresenter(CustomLinkListPresenter parentPresenter){
-        mParentPresenter = parentPresenter;
     }
 
     @Override
@@ -175,6 +169,10 @@ public class CustomLinkAddUpdateFragment extends BaseFragment implements CustomL
     @Override
     public CustomLinkListPresenter getParentPresenter(){
         return mParentPresenter;
+    }
+
+    public void setParentPresenter(CustomLinkListPresenter parentPresenter) {
+        mParentPresenter = parentPresenter;
     }
 
     @Override

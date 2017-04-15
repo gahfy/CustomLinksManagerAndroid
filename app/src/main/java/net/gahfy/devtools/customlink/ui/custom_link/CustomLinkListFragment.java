@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import net.gahfy.devtools.customlink.R;
-import net.gahfy.devtools.customlink.ui.base.BaseFragment;
 import net.gahfy.devtools.customlink.ui.activity.ContainerActivity;
+import net.gahfy.devtools.customlink.ui.base.BaseFragment;
 import net.gahfy.devtools.customlink.util.view.ErrorViewUtils;
 import net.gahfy.devtools.customlink.util.view.RecyclerViewUtils;
 
@@ -80,7 +82,7 @@ public class CustomLinkListFragment extends BaseFragment implements CustomLinkLi
             mPresenter.unbind();
         }
         catch(NullPointerException e){
-            // Do nothing (we are leaving the view, no matter)
+            FirebaseCrash.report(e);
         }
     }
 
