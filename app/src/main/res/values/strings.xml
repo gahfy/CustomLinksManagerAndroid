@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name" translatable="false">Custom Links Manager</string>
+    <string name="list_title">Custom Links</string>
+    <string name="add_title">New Custom Link</string>
+    <string name="edit_title">Edit Custom Link</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="title">Title</string>
+    <string name="uri">Uri *</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="star_explanation">* indicates required field</string>
+    <string name="ongoing_notification">Ongoing Notification</string>
+    <string name="cancel_notification">Cancel notification</string>
+    <string name="open_link">Open Link</string>
+    <string name="disabled_notification_dialog_title">Notifications are disabled</string>
+    <string name="disabled_notification_dialog_message">You need to enable notifications to access this feature</string>
+    <string name="disabled_notification_dialog_redirect">Notification settings</string>
+    <string name="no_custom_link">No Custom Link</string>
+    <string name="empty_uri_error">Uri is required</string>
+    <string name="technical_error">A technical error occurred, please try again later</string>
+</resources>

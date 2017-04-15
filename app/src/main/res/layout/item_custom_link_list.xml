@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lt_item_custom_link"
+    android:layout_width="match_parent"
+    android:minHeight="@dimen/recyclerview_item_height"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bkg_clickable_item">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingTop="@dimen/window_vertical_padding"
+        android:paddingBottom="@dimen/window_vertical_padding">
+        <TextView
+            android:id="@+id/lbl_custom_link_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/recyclerview_item_horizontal_padding"
+            android:paddingRight="@dimen/recyclerview_item_horizontal_padding"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textStyle="normal"
+            android:typeface="sans"
+            android:textSize="20sp"
+            android:textColor="@color/default_text" />
+        <TextView
+            android:id="@+id/lbl_custom_link_uri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/recyclerview_item_horizontal_padding"
+            android:paddingRight="@dimen/recyclerview_item_horizontal_padding"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/lbl_custom_link_title"
+            android:typeface="monospace"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:textColor="@color/link" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/lt_menu_container"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bkg_clickable_menu">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_centerInParent="true"
+            android:tint="@color/default_text" />
+    </RelativeLayout>
+</RelativeLayout>

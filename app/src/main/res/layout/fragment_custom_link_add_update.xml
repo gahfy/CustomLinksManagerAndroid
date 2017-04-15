@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/window_background"
+    android:clickable="true"
+    android:paddingLeft="@dimen/window_horizontal_padding"
+    android:paddingRight="@dimen/window_horizontal_padding"
+    android:paddingTop="@dimen/window_vertical_padding"
+    android:paddingBottom="@dimen/window_vertical_padding">
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lyt_txt_custom_link_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <EditText
+            android:id="@+id/txt_custom_link_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:hint="@string/title" />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lyt_txt_custom_link_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lyt_txt_custom_link_title"
+        app:errorTextAppearance="@style/error_appearance"
+        app:errorEnabled="true">
+
+        <EditText
+            android:id="@+id/txt_custom_link_uri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:hint="@string/uri" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_below="@id/lyt_txt_custom_link_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/star_explanation"
+        android:textSize="12sp"
+        android:layout_marginTop="24dp" />
+</RelativeLayout>
