@@ -12,10 +12,7 @@
             INSERT INTO custom_link(custom_link_title, custom_link_uri) VALUES (\'Rate this app\', \'market://details?id=net.gahfy.devtools.customlink\');
         </item>
         <item>
-            INSERT INTO custom_link(custom_link_title, custom_link_uri) VALUES (\'From Google to Google\', \'http://maps.google.com/maps?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&amp;daddr=1600+Amphitheatre+Pkwy,+Mountain+View,+CA&amp;directionsmode=bicycling\');
-        </item>
-        <item>
-            INSERT INTO custom_link(custom_link_uri) VALUES (\'http://www.google.com\');
+            INSERT INTO custom_link(custom_link_title, custom_link_uri) VALUES (\'Source code of the app\', \'https://github.com/gahfy/CustomLinksManagerAndroid\');
         </item>
     </string-array>
 </resources>
