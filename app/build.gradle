@@ -31,10 +31,6 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
 }
 
 dependencies {
