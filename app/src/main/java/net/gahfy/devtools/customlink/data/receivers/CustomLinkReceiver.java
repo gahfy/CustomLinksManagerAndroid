@@ -1,6 +1,5 @@
 package net.gahfy.devtools.customlink.data.receivers;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
@@ -10,7 +9,7 @@ import net.gahfy.devtools.customlink.util.view.ErrorViewUtils;
 /**
  * Receiver for when a custom link must be opened.
  */
-public class CustomLinkReceiver extends BroadcastReceiver {
+public class CustomLinkReceiver extends TestableBroadcastReceiver {
     /**
      * <p>The prefix of pending intent.</p>
      */
@@ -36,6 +35,7 @@ public class CustomLinkReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
+            super.onReceive(context, intent);
             CustomLink customLink = intent.getExtras().getParcelable(CUSTOM_LINK_EXTRA);
             if(customLink != null) {
                 Intent customLinkIntent = customLink.getIntent();
@@ -46,5 +46,10 @@ public class CustomLinkReceiver extends BroadcastReceiver {
         catch(Exception e){
             ErrorViewUtils.showExceptionToast(context, e);
         }
+    }
+
+    @Override
+    public String getActionName() {
+        return CUSTOM_LINK_ACTION;
     }
 }

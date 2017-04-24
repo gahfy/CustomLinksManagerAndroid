@@ -1,8 +1,8 @@
 package net.gahfy.devtools.customlink.ui.custom_link;
 
 import net.gahfy.devtools.customlink.data.model.CustomLink;
-import net.gahfy.devtools.customlink.ui.base.BaseView;
 import net.gahfy.devtools.customlink.ui.activity.ContainerActivity;
+import net.gahfy.devtools.customlink.ui.base.BaseView;
 
 interface CustomLinkAddUpdateView extends BaseView {
     CustomLink getCustomLink();

@@ -3,6 +3,7 @@ package net.gahfy.devtools.customlink;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+
 import net.gahfy.devtools.customlink.data.manager.DatabaseOpenHelper;
 import net.gahfy.devtools.customlink.util.ArrayUtils;
 
