@@ -40,7 +40,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class CustomLinkTests {
+public class CustomLinkInstrumentedTests {
     @Rule
     public IntentsTestRule<ContainerActivity> mActivityRule = new IntentsTestRule<>(
             ContainerActivity.class);
@@ -65,19 +65,7 @@ public class CustomLinkTests {
         String firstCellTitle = getText(withRecyclerView(R.id.rv_custom_link_list).atPositionOnView(0, R.id.lbl_custom_link_title));
         String firstCellUri = getText(withRecyclerView(R.id.rv_custom_link_list).atPositionOnView(0, R.id.lbl_custom_link_uri));
 
-        // Click on the button to add a custom link
-        onView(withId(R.id.fab_add_custom_link))
-                .perform(click());
-
-        // Set custom link title and uri
-        onView(withId(R.id.txt_custom_link_title))
-                .perform(typeText(mCustomLinkTitle), closeSoftKeyboard());
-        onView(withId(R.id.txt_custom_link_uri))
-                .perform(typeText(mCustomLinkUri), closeSoftKeyboard());
-
-        // Click on Submit
-        onView(withId(R.id.menu_done))
-                .perform(click());
+        addCustomLink(mCustomLinkTitle, mCustomLinkUri);
 
         // Check that view has been added
         onView(withRecyclerView(R.id.rv_custom_link_list).atPositionOnView(0, R.id.lbl_custom_link_title))
@@ -92,10 +80,7 @@ public class CustomLinkTests {
 
 
         // Check click on notification
-        mDevice.openNotification();
-        mDevice.wait(Until.hasObject(By.text(mCustomLinkTitle)), 10000);
-        UiObject2 notificationTitle = mDevice.findObject(By.text(mCustomLinkTitle));
-        notificationTitle.click();
+        clickOnNotification(mCustomLinkUri);
         Thread.sleep(300);
         assertTrue(TestableBroadcastReceiver.isCalled(CustomLinkReceiver.CUSTOM_LINK_ACTION));
         TestableBroadcastReceiver.resetCalled(CustomLinkReceiver.CUSTOM_LINK_ACTION);
@@ -103,10 +88,7 @@ public class CustomLinkTests {
         intended(allOf(hasAction("android.intent.action.VIEW")));
 
         // Click on Cancel on notification
-        mDevice.openNotification();
-        mDevice.wait(Until.hasObject(By.text("CANCEL")), 10000);
-        UiObject2 notificationCancel = mDevice.findObject(By.text("CANCEL"));
-        notificationCancel.click();
+        clickOnCancelNotification();
         Thread.sleep(300);
         assertTrue(TestableBroadcastReceiver.isCalled(NotificationCancelReceiver.NOTIFICATION_CANCEL_ACTION));
         TestableBroadcastReceiver.resetCalled(NotificationCancelReceiver.NOTIFICATION_CANCEL_ACTION);
@@ -138,7 +120,37 @@ public class CustomLinkTests {
                 .check(matches(withText(firstCellUri)));
     }
 
-    String getText(final Matcher<View> matcher) {
+    public void addCustomLink(String customLinkTitle, String customLinkUri) {
+        // Click on the button to add a custom link
+        onView(withId(R.id.fab_add_custom_link))
+                .perform(click());
+
+        // Set custom link title and uri
+        onView(withId(R.id.txt_custom_link_title))
+                .perform(typeText(customLinkTitle), closeSoftKeyboard());
+        onView(withId(R.id.txt_custom_link_uri))
+                .perform(typeText(customLinkUri), closeSoftKeyboard());
+
+        // Click on Submit
+        onView(withId(R.id.menu_done))
+                .perform(click());
+    }
+
+    public void clickOnNotification(String customLinkUri) {
+        mDevice.openNotification();
+        mDevice.wait(Until.hasObject(By.text(mCustomLinkTitle)), 10000);
+        UiObject2 notificationTitle = mDevice.findObject(By.text(customLinkUri));
+        notificationTitle.click();
+    }
+
+    public void clickOnCancelNotification() {
+        mDevice.openNotification();
+        mDevice.wait(Until.hasObject(By.text("CANCEL")), 10000);
+        UiObject2 notificationCancel = mDevice.findObject(By.text("CANCEL"));
+        notificationCancel.click();
+    }
+
+    private String getText(final Matcher<View> matcher) {
         final String[] stringHolder = {null};
         onView(matcher).perform(new ViewAction() {
             @Override

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="net.gahfy.devtools.customlink">
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="25"
+        tools:overrideLibrary="android.support.test.uiautomator.v18" />
+
+</manifest>

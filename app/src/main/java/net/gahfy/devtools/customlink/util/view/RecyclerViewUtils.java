@@ -13,9 +13,6 @@ public class RecyclerViewUtils {
 
         private Drawable divider;
 
-        /**
-         * Custom divider will be used
-         */
         public DividerItemDecoration(Context context, int resId) {
             divider = ContextCompat.getDrawable(context, resId);
         }

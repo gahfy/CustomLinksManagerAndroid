@@ -1,5 +1,6 @@
 package net.gahfy.devtools.customlink;
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -28,8 +29,8 @@ public class DevToolsApplicationTest {
         devToolsApplication.removeNotification(2);
         devToolsApplication.removeNotification(4);
         devToolsApplication.removeNotificationUpdateListener(notificationUpdateListener);
-        Assert.assertEquals("Test SQLiteDatabase DevToolsApplication.devToolsApplication.getDatabase()", counterTest, 2);
+        Assert.assertEquals(counterTest, 2);
         devToolsApplication.removeNotification(3);
-        Assert.assertEquals("Test SQLiteDatabase DevToolsApplication.devToolsApplication.getDatabase()", counterTest, 2);
+        Assert.assertEquals(counterTest, 2);
     }
 }
